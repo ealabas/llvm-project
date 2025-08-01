@@ -347,7 +347,4 @@ function(explicit_map_components_to_libraries out_libs)
   set(${out_libs} ${result} PARENT_SCOPE)
 endfunction(explicit_map_components_to_libraries)
 
-set(LLVM_TARGETS_TO_BUILD @LLVM_TARGETS_TO_BUILD@)
-set(LLVM_INCLUDE_MYISA @LLVM_INCLUDE_MYISA@)
-
 cmake_policy(POP)

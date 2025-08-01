@@ -166,5 +166,7 @@ if(NOT TARGET target_parser_gen)
   add_custom_target(target_parser_gen)
 endif()
 
+set(LLVM_INCLUDE_MYISA @LLVM_INCLUDE_MYISA@)
+
 set_property(GLOBAL PROPERTY LLVM_TARGETS_CONFIGURED On)
 include(${LLVM_CMAKE_DIR}/LLVM-Config.cmake)
