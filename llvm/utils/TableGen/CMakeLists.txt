@@ -78,3 +78,6 @@ add_tablegen(llvm-tblgen LLVM
   DEPENDS
   intrinsics_gen # via llvm-min-tablegen
   )
+
+  # Add MyISA to the list of targets for TableGen
+set(LLVM_TARGET_DEFINED MyISA)

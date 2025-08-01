@@ -6706,6 +6706,9 @@ const ToolChain &Driver::getToolChain(const ArgList &Args,
   auto &TC = ToolChains[Target.str()];
   if (!TC) {
     switch (Target.getOS()) {
+    case llvm::Triple::myisa:
+      TC = std::make_unique<toolchains::MyISA>(*this, Target, Args);
+      break;
     case llvm::Triple::AIX:
       TC = std::make_unique<toolchains::AIX>(*this, Target, Args);
       break;

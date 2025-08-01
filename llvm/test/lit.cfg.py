@@ -700,3 +700,9 @@ if "system-aix" in config.available_features:
 
 if config.has_logf128:
     config.available_features.add("has_logf128")
+
+# Add MyISA to the target list
+config.targets_to_build = "@LLVM_TARGETS_TO_BUILD@".split()
+
+# Add MyISA to the list of supported targets
+config.targets_to_build = config.targets_to_build + ['MyISA']

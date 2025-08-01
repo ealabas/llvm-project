@@ -23,6 +23,12 @@
 #  error Please define the macro LLVM_TARGET(TargetName)
 #endif
 
+#ifndef LLVM_TARGET_MYISA
+# define LLVM_TARGET_MYISA 0
+#endif
+
+LLVM_TARGET(MyISA)
+
 @LLVM_ENUM_TARGETS@
 
 #undef LLVM_TARGET

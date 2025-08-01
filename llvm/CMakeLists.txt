@@ -537,6 +537,7 @@ set(LLVM_ALL_TARGETS
   LoongArch
   Mips
   MSP430
+  MyISA
   NVPTX
   PowerPC
   RISCV
@@ -1550,4 +1551,11 @@ if (XCODE)
   foreach(target ${LLVM_XCODE_EXTRA_TARGET_SCHEMES})
     set_target_properties(${target} PROPERTIES XCODE_GENERATE_SCHEME ON)
   endforeach()
+endif()
+
+# Add configuration for MyISA target
+if( "MyISA" IN_LIST LLVM_TARGETS_TO_BUILD )
+  set(LLVM_INCLUDE_MYISA 1)
+else()
+  set(LLVM_INCLUDE_MYISA 0)
 endif()
