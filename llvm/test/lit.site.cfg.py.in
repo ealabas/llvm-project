@@ -67,6 +67,7 @@ config.have_vc_rev = @LLVM_APPEND_VC_REV@
 config.force_vc_rev = "@LLVM_FORCE_VC_REVISION@"
 config.has_logf128 = @LLVM_HAS_LOGF128@
 config.has_key_instructions = @LLVM_EXPERIMENTAL_KEY_INSTRUCTIONS@
+config.targets_to_build = "@LLVM_TARGETS_TO_BUILD@".split()
 
 import lit.llvm
 lit.llvm.initialize(lit_config, config)

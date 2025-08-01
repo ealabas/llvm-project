@@ -63,7 +63,7 @@ llvm_config.with_environment("OCAMLRUNPARAM", "b")
 def get_asan_rtlib():
     if (
         not "Address" in config.llvm_use_sanitizer
-        or not "Darwin" in config.target_os
+        or not "Darwin" in config.host_os
         or not "x86" in config.host_triple
     ):
         return ""
@@ -93,13 +93,6 @@ config.substitutions.append(("%pluginext", config.llvm_plugin_ext))
 config.substitutions.append(("%exeext", config.llvm_exe_ext))
 config.substitutions.append(("%llvm_src_root", config.llvm_src_root))
 
-# Add IR2Vec test vocabulary path substitution
-config.substitutions.append(
-    (
-        "%ir2vec_test_vocab_dir",
-        os.path.join(config.test_source_root, "Analysis", "IR2Vec", "Inputs"),
-    )
-)
 
 lli_args = []
 # The target triple used by default by lli is the process target triple (some
@@ -204,7 +197,6 @@ tools.extend(
         "llvm-dlltool",
         "llvm-exegesis",
         "llvm-extract",
-        "llvm-ir2vec",
         "llvm-isel-fuzzer",
         "llvm-ifs",
         "llvm-install-name-tool",
@@ -700,9 +692,3 @@ if "system-aix" in config.available_features:
 
 if config.has_logf128:
     config.available_features.add("has_logf128")
-
-# Add MyISA to the target list
-config.targets_to_build = "@LLVM_TARGETS_TO_BUILD@".split()
-
-# Add MyISA to the list of supported targets
-config.targets_to_build = config.targets_to_build + ['MyISA']
